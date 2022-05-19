@@ -1,0 +1,33 @@
+.container {
+  max-width: $max-width;
+  padding: 0 2rem;
+  overflow: hidden;
+  margin: 0 auto;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: $secondary-text-color;
+  font-weight: bold;
+}
+
+.btn {
+  @include dynamic-padding(0.9rem, 1.4rem, 0.9rem, 1.4rem);
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 1.1px;
+}
+
+.btn-primary {
+  @include setBackgroundAndFontColor($primary-color);
+  border: none;
+  outline: none;
+  border-radius: 0.2rem;
+
+  &:hover {
+    background-color: set-hover-color($primary-color);
+    transition: all 0.2s ease;
+    box-shadow: $box-shadow-primary;
+  }
+}

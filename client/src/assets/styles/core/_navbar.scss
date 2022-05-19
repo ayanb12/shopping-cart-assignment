@@ -1,0 +1,56 @@
+nav {
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  box-shadow: $box-shadow-primary;
+  height: 6rem;
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+
+  .logo {
+    height: 4.5rem;
+    width: 9rem;
+  }
+
+  & > div {
+    width: 100%;
+  }
+
+  .nav-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+
+    a:hover {
+      color: $primary-color;
+    }
+
+    .upper {
+      @include dynamic-margin(0, 0, 0.2rem, auto);
+    }
+
+    .lower {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .cart {
+        @include dynamic-padding(0.8rem, 1.6rem, 0.8rem, 1.6rem);
+        background-color: $secondary-color;
+        font-weight: 600;
+        &:hover {
+          background-color: set-hover-color($secondary-color);
+          cursor: pointer;
+        }
+
+        .cart-icon {
+          margin-right: 0.1rem;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}

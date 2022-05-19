@@ -1,15 +1,25 @@
 {
-  "name": "code-exercise",
+  "name": "shopping-cart-assignment",
   "version": "1.0.0",
-  "description": "This is a shopping cart coding exercise",
+  "description": "This is the base folder for the shopping cart exercise. You will have all the static assets and mock server responses available in this repo.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "canned -p 5000 ./server"
+    "server": "npm run watch --prefix server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayanb12/shopping-cart-assignment.git"
+  },
+  "keywords": [],
   "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "canned": "^0.3.12"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayanb12/shopping-cart-assignment/issues"
+  },
+  "homepage": "https://github.com/ayanb12/shopping-cart-assignment#readme",
+  "devDependencies": {
+    "concurrently": "^7.2.0"
   }
 }
