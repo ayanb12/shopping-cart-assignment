@@ -1,0 +1,13 @@
+.container {
+  max-width: $max-width;
+  padding: 0 2rem;
+  overflow: hidden;
+  margin: 0 auto;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: $secondary-text-color;
+  font-weight: bold;
+}
