@@ -6,6 +6,9 @@
   "scripts": {
     "server": "npm run watch --prefix server",
     "client": "npm start --prefix client",
+    "client-install": "npm install --prefix client",
+    "server-install": "npm install --prefix server",
+    "install": "npm run client-install && npm run server-install",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
