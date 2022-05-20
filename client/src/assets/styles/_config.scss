@@ -1,10 +1,11 @@
-$primary-color: #b80808;
+$primary-color: #be1e33;
 $primary-text-color: #000 !default;
 $max-width: 1200px;
 $secondary-color: #eee;
 $secondary-text-color: rgb(53, 52, 52);
 $marginValues: (1, 2, 3, 4, 5);
 $box-shadow-primary: 2px 2px 8px 0px rgba(0, 0, 0, 0.75);
+$box-shadow-secondary: rgb(0 0 0 / 45%) 0px 25px 25px -20px;
 
 @mixin dynamic-padding($top, $right, $bottom, $left) {
   padding-top: $top;
@@ -28,6 +29,19 @@ $box-shadow-primary: 2px 2px 8px 0px rgba(0, 0, 0, 0.75);
   }
 }
 
+@function set-font-color($color) {
+  @if (lightness($color) > 80) {
+    @return #141413;
+  } @else {
+    @return #fff;
+  }
+}
+
+@mixin setBackgroundAndFontColor($color) {
+  background-color: $color;
+  color: set-font-color($color);
+}
+
 @each $mar in $marginValues {
   // for all side margins
   .m-#{$mar} {
@@ -49,6 +63,10 @@ $box-shadow-primary: 2px 2px 8px 0px rgba(0, 0, 0, 0.75);
     margin-right: #{$mar}rem;
   }
 
+  //   only margin bottom
+  .mb-#{$mar} {
+    margin-bottom: #{$mar}rem;
+  }
   // for all side padding
   .p-#{$mar} {
     padding: #{$mar}rem;
