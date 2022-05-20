@@ -1,0 +1,24 @@
+.category-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.2rem;
+  box-shadow: $box-shadow-secondary;
+  height: 15rem;
+
+  &:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  .category-img {
+    height: 80%;
+  }
+
+  .category-content {
+    text-align: center;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+}
