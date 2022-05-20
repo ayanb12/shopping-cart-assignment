@@ -6,7 +6,7 @@ import "../assets/styles/style.scss";
 const Header = () => {
   return (
     <>
-      <nav className="nav px-3">
+      <nav className="nav px-3 mb-1">
         <img
           src={require("../assets/images/logo.png")}
           alt="E-Commerce app logo"

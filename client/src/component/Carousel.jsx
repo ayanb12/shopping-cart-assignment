@@ -7,7 +7,6 @@ import "slick-carousel/slick/slick-theme.css";
 const Carousel = ({ settings, children }) => {
   return (
     <div>
-      <h2>Pause On Hover</h2>
       <Slider {...settings}>{children}</Slider>
     </div>
   );
