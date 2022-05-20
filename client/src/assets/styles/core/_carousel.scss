@@ -1,0 +1,14 @@
+.carousel {
+  height: 200px;
+
+  .carousel-img {
+    background-color: cyan;
+    height: 250px;
+    display: inline-block;
+  }
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: $primary-color !important;
+}
