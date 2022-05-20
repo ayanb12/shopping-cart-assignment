@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "This is the base folder for the shopping cart exercise. You will have all the static assets and mock server responses available in this repo.",
   "main": "index.js",
+  "devDependencies": {
+    "concurrently": "^7.2.0"
+  },
   "scripts": {
     "server": "npm run watch --prefix server",
     "client": "npm start --prefix client",
