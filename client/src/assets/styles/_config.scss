@@ -82,6 +82,11 @@ $box-shadow-secondary: rgb(0 0 0 / 45%) 0px 25px 25px -20px;
     padding: 0 #{$mar}rem;
   }
 
+  // padding top
+  .pt-#{$mar} {
+    padding-top: #{$mar}rem;
+  }
+
   //   only padding right
   .pr-#{$mar} {
     padding-right: #{$mar}rem;
