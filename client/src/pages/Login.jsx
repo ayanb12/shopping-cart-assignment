@@ -11,7 +11,7 @@ const Login = () => {
           <p>Get access to your Orders. Whishlist and Recommendations.</p>
         </div>
         <Form
-          submit={() => alert("Submitted")}
+          submit={() => console.log("hello")}
           initialValue={{ email: "", password: "" }}
         >
           <FormInput type="email" name="email" labelContent="Email" />

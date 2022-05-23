@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import React, { createContext } from "react";
+import useFormValidation from "../../hooks/useFormValidation";
 
 export const FormContent = createContext({
   form: {},
@@ -6,25 +7,10 @@ export const FormContent = createContext({
 });
 
 const Form = ({ initialValue, submit, children }) => {
-  const [form, setForm] = useState(initialValue);
-  const [error, setError] = useState(null);
+  const { form, error, validating, setForm } = useFormValidation(initialValue);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const validate = () => {
-    for (let key in form) {
-      if (form[key] === "") {
-        setError({
-          key,
-          message: `Please fill the details!`,
-        });
-        return false;
-      }
-    }
-    setError(null);
-    return true;
   };
 
   return (
@@ -33,7 +19,10 @@ const Form = ({ initialValue, submit, children }) => {
         className="form px-2"
         onSubmit={(e) => {
           e.preventDefault();
-          if (validate()) submit();
+          if (validating()) {
+            submit();
+            setForm({});
+          }
         }}
       >
         <FormContent.Provider

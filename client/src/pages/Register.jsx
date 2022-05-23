@@ -11,7 +11,7 @@ const Register = () => {
           <p>We do not share your personal details with anyone.</p>
         </div>
         <Form
-          submit={() => alert("Submitted")}
+          submit={() => console.log("hello")}
           initialValue={{
             firstname: "",
             lastname: "",
