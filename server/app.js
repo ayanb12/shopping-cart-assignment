@@ -16,7 +16,7 @@ app.use(
 
 app.use(express.json());
 
-app.use("/static", express.static(path.join(__dirname, "assets")));
+app.use("/static/images", express.static(path.join(__dirname, "assets")));
 
 app.use("/", bannersRouter);
 app.use("/", categoryRouter);
