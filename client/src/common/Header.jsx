@@ -23,7 +23,7 @@ const Header = () => {
 
             <div className="lower">
               <div className="menu">
-                <Link to={`/home`} className="mr-1">
+                <Link to={`/`} className="mr-1">
                   Home
                 </Link>
                 <Link to={`/products`}>Products</Link>
