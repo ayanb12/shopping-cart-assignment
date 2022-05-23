@@ -1,0 +1,11 @@
+.sidebar-item {
+  width: 100%;
+  margin: 0.1rem;
+  padding: 0.5rem;
+  color: $primary-text-color;
+
+  &:hover {
+    color: $primary-color;
+    cursor: pointer;
+  }
+}

@@ -3,10 +3,10 @@ nav {
   display: flex;
   align-items: center;
   box-shadow: $box-shadow-primary;
-  height: 6rem;
-  //   position: fixed;
-  //   top: 0;
-  //   left: 0;
+  height: 15vh;
+  top: 0;
+  left: 0;
+  // position: sticky;
   //   width: 100%;
 
   .logo {
