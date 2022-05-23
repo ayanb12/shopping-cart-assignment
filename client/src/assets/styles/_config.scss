@@ -63,6 +63,11 @@ $box-shadow-secondary: rgb(0 0 0 / 45%) 0px 25px 25px -20px;
     margin-right: #{$mar}rem;
   }
 
+  // margin top
+  .mt-#{$mar} {
+    margin-top: #{$mar}rem;
+  }
+
   //   only margin bottom
   .mb-#{$mar} {
     margin-bottom: #{$mar}rem;

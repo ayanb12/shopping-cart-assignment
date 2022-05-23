@@ -1,15 +1,10 @@
 .sidebar-and-products {
-  // width: 100%;
   display: flex;
-  background-color: $secondary-color;
 
   .sidebar {
     width: 25vw;
-    height: 75vh;
-    position: static;
-    left: 0;
-    top: 0;
-    padding: 0.5rem;
+    height: 80vh;
+    background-color: $secondary-color;
     // margin-left: 5vw;
     // margin-top: 19vh;
   }

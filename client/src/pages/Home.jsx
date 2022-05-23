@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Carousel from "../component/Carousel";
 import CategoryCard from "../component/CategoryCard";
 import { CarouselPauseOnHoverSettings } from "../utils/CarouselSettings";
 
 const Home = () => {
+  const fetchBanners = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/banners");
+      const value = await res.json();
+      console.log(await value);
+    } catch (error) {
+      console.log("error in fetching banners");
+    }
+  };
+
+  useEffect(() => {
+    fetchBanners();
+  }, []);
+
   return (
     <>
       <Carousel settings={CarouselPauseOnHoverSettings("carousel mb-2")}>
