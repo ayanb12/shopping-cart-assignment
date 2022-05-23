@@ -5,7 +5,7 @@ function Products() {
   return (
     <>
       <div className="sidebar-and-products">
-        <div className="sidebar">
+        <div className="sidebar p-1">
           <Sidebar />
         </div>
 
