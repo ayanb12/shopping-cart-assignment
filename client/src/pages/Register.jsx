@@ -1,8 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Form from "../component/Form/Form";
 import FormInput from "../component/Form/FormInput";
+import useAuth from "../hooks/useAuth";
 
 const Register = () => {
+  const { setDataToStorage } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = (values) => {
+    setDataToStorage(values);
+    navigate("/");
+  };
+
   return (
     <>
       <div className="login-wrapper my-2 py-2">
@@ -11,7 +21,7 @@ const Register = () => {
           <p>We do not share your personal details with anyone.</p>
         </div>
         <Form
-          submit={() => console.log("hello")}
+          submit={handleSubmit}
           initialValue={{
             firstname: "",
             lastname: "",

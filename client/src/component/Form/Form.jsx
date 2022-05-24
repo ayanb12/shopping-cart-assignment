@@ -16,11 +16,12 @@ const Form = ({ initialValue, submit, children }) => {
   return (
     <>
       <form
+        autoComplete="off"
         className="form px-2"
         onSubmit={(e) => {
           e.preventDefault();
           if (validating()) {
-            submit();
+            submit({ ...form });
             setForm({});
           }
         }}
