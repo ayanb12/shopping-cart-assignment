@@ -6,6 +6,7 @@ $secondary-text-color: rgb(53, 52, 52);
 $marginValues: (1, 2, 3, 4, 5);
 $box-shadow-primary: 2px 2px 8px 0px rgba(0, 0, 0, 0.75);
 $box-shadow-secondary: rgb(0 0 0 / 45%) 0px 25px 25px -20px;
+$disable-color: #918e8e;
 
 @mixin dynamic-padding($top, $right, $bottom, $left) {
   padding-top: $top;
