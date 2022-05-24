@@ -2,17 +2,17 @@ import { useState } from "react";
 
 const useAuth = () => {
   const [data, setData] = useState(() =>
-    JSON.parse(localStorage.getItem("credentials"))
+    JSON.parse(sessionStorage.getItem("credentials"))
   );
 
   const clearStorage = () => {
-    localStorage.removeItem("credentials");
+    sessionStorage.removeItem("credentials");
     setData(null);
   };
 
   const setDataToStorage = (values) => {
     setData(values);
-    localStorage.setItem("credentials", JSON.stringify(values));
+    sessionStorage.setItem("credentials", JSON.stringify(values));
   };
 
   return {
