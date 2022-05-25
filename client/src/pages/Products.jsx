@@ -1,17 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useCallback } from "react";
 import Sidebar from "../component/Sidebar";
 import { CartContext } from "../hooks/useCartDetails";
 import ProductService from "../service/Product.service";
 
 function Products() {
-  const { allProducts, addItems, getAllProducts, cartItems } =
-    useContext(CartContext);
-  // console.log(cartItems);
+  const { allProducts, addItems, getAllProducts } = useContext(CartContext);
+
+  const getProducts = useCallback(async () => {
+    await getAllProducts();
+  }, [getAllProducts]);
 
   useEffect(() => {
-    (async function getProducts() {
-      await getAllProducts();
-    })();
+    getProducts();
   }, []);
 
   const handleClick = (item) => {
