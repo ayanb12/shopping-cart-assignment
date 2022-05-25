@@ -1,11 +1,11 @@
 import { BsFillCartFill } from "react-icons/bs";
+import { FiLogOut } from "react-icons/fi";
 import {
   AiOutlineClose,
   AiFillDelete,
   AiOutlinePlusCircle,
   AiOutlineMinusCircle,
   AiFillInfoCircle,
-  FiLogOut
 } from "react-icons/ai";
 
 export {
@@ -15,5 +15,5 @@ export {
   AiOutlinePlusCircle,
   AiOutlineMinusCircle,
   AiFillInfoCircle,
-  FiLogOut
+  FiLogOut,
 };

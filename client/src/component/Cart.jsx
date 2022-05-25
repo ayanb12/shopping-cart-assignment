@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   AiOutlineClose,
   AiFillDelete,
@@ -9,7 +9,7 @@ import { CartContext } from "../hooks/useCartDetails";
 import productService from "../service/Product.service";
 
 function Cart({ showCart, setShowCart }) {
-  const [itemCounter, setItemCounter] = useState(1);
+  const [itemCounter] = useState(1);
 
   const { cartItems, cartItemsInc, cartItemDec, cartItemDelete } =
     useContext(CartContext);
