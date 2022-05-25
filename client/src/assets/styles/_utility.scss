@@ -26,6 +26,7 @@ a {
 
 .btn-primary {
   @include setBackgroundAndFontColor($primary-color);
+  cursor: pointer;
 
   &:hover {
     background-color: set-background-color($primary-color);
@@ -41,4 +42,8 @@ a {
   display: flex;
   align-items: center;
   margin-bottom: 0.2rem;
+}
+
+.btn-disable {
+  @include setBackgroundAndFontColor($disable-color);
 }
