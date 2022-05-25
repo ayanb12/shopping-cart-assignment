@@ -1,0 +1,5 @@
+const LOCAL_BACKEND_BASE_URL = "http://localhost:5000";
+
+const BACKEND_BASE_URL = LOCAL_BACKEND_BASE_URL;
+
+export { BACKEND_BASE_URL };

@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import CategoryService from "../service/Category.service";
 
 function Sidebar() {
+  const [category, setCategory] = useState(null);
+  const fetchCategories = async () => {
+    const { data } = await CategoryService.getAllCategories();
+    setCategory(data);
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
   return (
     <>
-      {[1, 2, 3, 4, 5].map((item, index) => (
-        <div key={item}>
-          <div className="sidebar-item">My Product {item}</div>
-          <hr></hr>
-        </div>
-      ))}
+      {category &&
+        category.map((item, index) => (
+          <div key={item.id}>
+            <div className="sidebar-item">{item.name}</div>
+            <hr></hr>
+          </div>
+        ))}
     </>
   );
 }

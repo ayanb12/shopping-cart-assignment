@@ -93,4 +93,11 @@
     position: absolute;
     width: 100%;
   }
+
+  .icon-inc-dec {
+    @include setBackgroundAndFontColor($primary-color);
+    margin: 0 1px;
+    height: 1.5rem;
+    width: 1.1rem;
+  }
 }
