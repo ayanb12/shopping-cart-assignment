@@ -9,11 +9,8 @@ import { CartContext } from "../hooks/useCartDetails";
 import productService from "../service/Product.service";
 
 function Cart({ showCart, setShowCart }) {
-  const [itemCounter] = useState(1);
-
   const { cartItems, cartItemsInc, cartItemDec, cartItemDelete } =
     useContext(CartContext);
-  console.log(cartItems);
 
   const handleItemCountInc = (item) => {
     cartItemsInc(item);
@@ -58,7 +55,7 @@ function Cart({ showCart, setShowCart }) {
                         <AiOutlineMinusCircle
                           onClick={() => handleItemCountDec(item)}
                         />
-                        <p className="number-of-items">{itemCounter}</p>
+                        <p className="number-of-items">{item.count}</p>
                         <AiOutlinePlusCircle
                           onClick={() => handleItemCountInc(item)}
                         />
