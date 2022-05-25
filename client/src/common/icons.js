@@ -5,6 +5,7 @@ import {
   AiOutlinePlusCircle,
   AiOutlineMinusCircle,
   AiFillInfoCircle,
+  FiLogOut
 } from "react-icons/ai";
 
 export {
@@ -14,4 +15,5 @@ export {
   AiOutlinePlusCircle,
   AiOutlineMinusCircle,
   AiFillInfoCircle,
+  FiLogOut
 };
