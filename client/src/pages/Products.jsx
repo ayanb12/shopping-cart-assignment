@@ -6,6 +6,8 @@ import ProductService from "../service/Product.service";
 function Products() {
   const { allProducts, addItems, getAllProducts } = useContext(CartContext);
 
+  console.log(allProducts);
+
   const getProducts = useCallback(async () => {
     await getAllProducts();
   }, [getAllProducts]);

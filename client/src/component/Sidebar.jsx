@@ -4,12 +4,10 @@ function Sidebar() {
   return (
     <>
       {[1, 2, 3, 4, 5].map((item, index) => (
-        <>
-          <div>
-            <div className="sidebar-item">My Product {item}</div>
-            <hr></hr>
-          </div>
-        </>
+        <div key={item}>
+          <div className="sidebar-item">My Product {item}</div>
+          <hr></hr>
+        </div>
       ))}
     </>
   );

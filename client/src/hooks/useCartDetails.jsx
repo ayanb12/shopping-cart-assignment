@@ -51,8 +51,8 @@ function cartReducer(state, action) {
           if (item.id === action.payload.id) {
             return {
               ...item,
-              // count: item.count++,
-              // itemTotalPrice: item.price * count,
+              count: ++item.count,
+              itemTotalPrice: item.price * item.count,
             };
           } else {
             return {
@@ -63,24 +63,28 @@ function cartReducer(state, action) {
       };
 
     case "DECREASE_ITEM":
+      state.cartItems.forEach((item, idx) => {
+        if (item.id === action.payload.id && item.count > 1) {
+          let obj = {
+            ...item,
+            count: --item.count,
+            itemTotalPrice: item.price * item.count,
+          };
+
+          state.cartItems.splice(idx, 1, obj);
+        } else if (item.id === action.payload.id && item.count === 1) {
+          state.cartItems.splice(idx, 1);
+          state.allProducts.forEach((item, idx) => {
+            if (item.id === action.payload.id) {
+              let obj = { ...item, disable: false };
+              state.allProducts.splice(idx, 1, obj);
+            }
+          });
+        }
+      });
       return {
         ...state,
-        cartItems: state.cartItems.map((item, index) => {
-          if (item.id === action.payload.id && item.count > 1) {
-            return {
-              ...item,
-              // count: count--,
-              // itemTotalPrice: item.price * count,
-            };
-          } else if (item.id === action.payload.id && item.count === 1) {
-            //  when 1 item only
-            return {};
-          } else {
-            return {
-              ...item,
-            };
-          }
-        }),
+        cartItems: state.cartItems,
       };
 
     case "DELETE_ITEM":
@@ -112,37 +116,32 @@ export default function CartProvider({ children }) {
   }
 
   function addItems(item) {
+    let updatedItem = {
+      ...item,
+      count: 1,
+      itemTotalPrice: item.price,
+    };
     dispatch({
       type: "ALREADY_ADDED",
       payload: item,
     });
     dispatch({
       type: "ADD_ITEMS",
-      payload: item,
+      payload: updatedItem,
     });
   }
 
   function cartItemsInc(item) {
-    let updatedItem = {
-      ...item,
-      count: 1,
-      itemTotalPrice: item.price * this.count,
-    };
     dispatch({
       type: "INCREASE_ITEM",
-      payload: updatedItem,
+      payload: item,
     });
   }
 
   function cartItemDec(item) {
-    let updatedItem = {
-      ...item,
-      count: item.count - 1,
-      itemTotalPrice: item.price * this.count,
-    };
     dispatch({
       type: "DECREASE_ITEM",
-      payload: updatedItem,
+      payload: item,
     });
   }
 
