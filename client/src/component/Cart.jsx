@@ -53,10 +53,12 @@ function Cart({ showCart, setShowCart }) {
                     <div className="cart-item-main-section">
                       <div className="cart-item-quantity-section">
                         <AiOutlineMinusCircle
+                          className="icon-inc-dec"
                           onClick={() => handleItemCountDec(item)}
                         />
                         <p className="number-of-items">{item.count}</p>
                         <AiOutlinePlusCircle
+                          className="icon-inc-dec"
                           onClick={() => handleItemCountInc(item)}
                         />
                         <p className="number-of-items">Rs {item.price}</p>
