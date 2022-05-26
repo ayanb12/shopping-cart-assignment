@@ -7,10 +7,17 @@ import {
 } from "../common/icons";
 import { CartContext } from "../hooks/useCartDetails";
 import productService from "../service/Product.service";
+import { useNavigate } from "react-router-dom";
 
 function Cart({ showCart, setShowCart }) {
-  const { cartItems, cartItemsInc, cartItemDec, cartItemDelete } =
-    useContext(CartContext);
+  const navigate = useNavigate();
+  const {
+    cartItems,
+    cartItemsInc,
+    cartItemDec,
+    cartItemDelete,
+    cartTotalPrice,
+  } = useContext(CartContext);
 
   const handleItemCountInc = (item) => {
     cartItemsInc(item);
@@ -25,22 +32,22 @@ function Cart({ showCart, setShowCart }) {
   };
 
   const renderCart = () => {
-    if (cartItems.length) {
-      return (
-        <>
-          <div className="cart-popup">
-            <div className="cart-heading">
-              <div className="cart-heading-text">
-                <h1>My Cart </h1>
-                <span>( {cartItems.length} Items )</span>
-              </div>
-              <AiOutlineClose
-                onClick={() => {
-                  setShowCart(false);
-                }}
-              />
+    return (
+      <>
+        <div className="cart-popup">
+          <div className="cart-heading">
+            <div className="cart-heading-text">
+              <h1>My Cart </h1>
+              <span>( {cartItems.length} Items )</span>
             </div>
-            {cartItems.map((item, idx) => (
+            <AiOutlineClose
+              onClick={() => {
+                setShowCart(false);
+              }}
+            />
+          </div>
+          {cartItems.length ? (
+            cartItems.map((item, idx) => (
               <div className="cart-item-section" key={item.id}>
                 <div className="cart-item">
                   <img
@@ -75,26 +82,38 @@ function Cart({ showCart, setShowCart }) {
                   </div>
                 </div>
               </div>
-            ))}
-            <div className="proceed-to-checkout">
-              <h4>Proceed to Checkout</h4>
-              <h4>Rs 100 </h4>
-            </div>
-          </div>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <span>No items in cart</span>
-          <AiOutlineClose
-            onClick={() => {
-              setShowCart(false);
+            ))
+          ) : (
+            <p style={{ textAlign: "center", marginTop: ".3rem" }}>
+              No items in cart
+            </p>
+          )}
+          <div
+            className="proceed-to-checkout"
+            style={{
+              justifyContent: cartItems.length ? "space-between" : null,
             }}
-          />
-        </>
-      );
-    }
+          >
+            {cartItems.length ? (
+              <>
+                <h4>Proceed to Checkout</h4>
+                <h4>{cartTotalPrice}</h4>
+              </>
+            ) : (
+              <h4
+                className="empty-cart"
+                onClick={() => {
+                  navigate("/products");
+                  setShowCart(false);
+                }}
+              >
+                Start Shopping
+              </h4>
+            )}
+          </div>
+        </div>
+      </>
+    );
   };
 
   return <>{showCart && renderCart()}</>;

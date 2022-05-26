@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsFillCartFill, FiLogOut } from "../common/icons";
@@ -6,7 +5,6 @@ import useAuth from "../hooks/useAuth";
 import "../assets/styles/style.scss";
 import Cart from "../component/Cart";
 import Modal from "react-modal";
-
 
 Modal.setAppElement("#root");
 

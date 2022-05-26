@@ -4,6 +4,9 @@ import ProductService from "../service/Product.service";
 const initialState = {
   allProducts: [],
   cartItems: [],
+  filterCategoryId: "all_categories",
+  isItemAvailable: true,
+  cartTotalPrice: 0,
 };
 
 export const CartContext = createContext(initialState);
@@ -11,14 +14,20 @@ export const CartContext = createContext(initialState);
 function cartReducer(state, action) {
   switch (action.type) {
     case "SET_ALL_PRODUCTS":
+      let filteredData = action.payload.filter((item, idx) =>
+        state.filterCategoryId === "all_categories"
+          ? true
+          : state.filterCategoryId === item.category
+      );
       return {
         ...state,
-        allProducts: action.payload.map((item, idx) => {
+        allProducts: filteredData.map((item, idx) => {
           return {
             ...item,
             disable: false,
           };
         }),
+        isItemAvailable: filteredData.length ? true : false,
       };
 
     case "ADD_ITEMS":
@@ -95,6 +104,21 @@ function cartReducer(state, action) {
         }),
       };
 
+    case "UPDATE_CATEGORY":
+      return {
+        ...state,
+        filterCategoryId: action.payload,
+      };
+
+    case "UPDATE_CART_TOTAL":
+      return {
+        ...state,
+        cartTotalPrice: state.cartItems.reduce(
+          (accumulator, current) => accumulator + current.itemTotalPrice,
+          0
+        ),
+      };
+
     default:
       return state;
   }
@@ -129,6 +153,7 @@ export default function CartProvider({ children }) {
       type: "ADD_ITEMS",
       payload: updatedItem,
     });
+    cartTotalCalculate();
   }
 
   function cartItemsInc(item) {
@@ -136,6 +161,7 @@ export default function CartProvider({ children }) {
       type: "INCREASE_ITEM",
       payload: item,
     });
+    cartTotalCalculate();
   }
 
   function cartItemDec(item) {
@@ -143,12 +169,29 @@ export default function CartProvider({ children }) {
       type: "DECREASE_ITEM",
       payload: item,
     });
+    cartTotalCalculate();
   }
 
   function cartItemDelete(item) {
     dispatch({
       type: "DELETE_ITEM",
       payload: item,
+    });
+    cartTotalCalculate();
+  }
+
+  function updateCategoryId(id) {
+    console.log(id);
+    dispatch({
+      type: "UPDATE_CATEGORY",
+      payload: id,
+    });
+    getAllProducts();
+  }
+
+  function cartTotalCalculate() {
+    dispatch({
+      type: "UPDATE_CART_TOTAL",
     });
   }
 
@@ -163,6 +206,9 @@ export default function CartProvider({ children }) {
           cartItemDelete,
           cartItemsInc,
           cartItemDec,
+          updateCategoryId,
+          isItemAvailable: state.isItemAvailable,
+          cartTotalPrice: state.cartTotalPrice,
         }}
       >
         {children}

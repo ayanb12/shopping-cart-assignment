@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useCallback } from "react";
+import { NotificationMessage } from "../common/NotificationMessage";
 import Sidebar from "../component/Sidebar";
 import { CartContext } from "../hooks/useCartDetails";
 import ProductService from "../service/Product.service";
 
 function Products() {
-  const { allProducts, addItems, getAllProducts } = useContext(CartContext);
+  const { allProducts, addItems, getAllProducts, isItemAvailable } =
+    useContext(CartContext);
 
-  console.log(allProducts);
+  // console.log(allProducts);
 
   const getProducts = useCallback(async () => {
     await getAllProducts();
@@ -46,15 +48,20 @@ function Products() {
                     className={`buynow btn-primary ${
                       item.disable && "btn-disable"
                     }`}
-                    onClick={() => handleClick(item)}
+                    onClick={() => {
+                      handleClick(item);
+                      NotificationMessage("success", "Added to Cart");
+                    }}
                   >
                     Buy Now
                   </button>
                 </div>
               </div>
             ))
-          ) : (
+          ) : isItemAvailable ? (
             <h1>loading...</h1>
+          ) : (
+            <h1>Items not Available</h1>
           )}
         </div>
       </div>
