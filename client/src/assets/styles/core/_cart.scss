@@ -84,7 +84,7 @@
 
   .proceed-to-checkout {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     background-color: $primary-color;
     bottom: 0;
     align-items: center;
@@ -99,5 +99,11 @@
     margin: 0 1px;
     height: 1.5rem;
     width: 1.1rem;
+  }
+
+  .empty-cart {
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
   }
 }
