@@ -64,23 +64,25 @@ const Header = () => {
                 </>
               )}
             </div>
+            {location.pathname === "/login" ||
+            location.pathname === "/register" ? null : (
+              <div className="lower">
+                <div className="menu">
+                  <Link to={`/home`} className="mr-1">
+                    Home
+                  </Link>
+                  <Link to={`/products`}>Products</Link>
+                </div>
 
-            <div className="lower">
-              <div className="menu">
-                <Link to={`/home`} className="mr-1">
-                  Home
-                </Link>
-                <Link to={`/products`}>Products</Link>
+                <div className="cart" onClick={() => setShowCart(!showCart)}>
+                  <BsFillCartFill className="cart-icon" />
+                  Cart
+                </div>
+                <Modal isOpen={showCart} style={modalCustomStyles}>
+                  <Cart showCart={showCart} setShowCart={setShowCart} />
+                </Modal>
               </div>
-
-              <div className="cart" onClick={() => setShowCart(!showCart)}>
-                <BsFillCartFill className="cart-icon" />
-                Cart
-              </div>
-              <Modal isOpen={showCart} style={modalCustomStyles}>
-                <Cart showCart={showCart} setShowCart={setShowCart} />
-              </Modal>
-            </div>
+            )}
           </div>
         </div>
       </nav>
