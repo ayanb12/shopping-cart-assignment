@@ -1,3 +1,5 @@
+@import "./core/media-queries";
+
 .container {
   max-width: $max-width;
   padding: 0 2rem;
@@ -5,6 +7,14 @@
   margin: 0 auto;
   height: auto;
   // overflow-y: auto;
+
+  @include mobile {
+    padding: 0;
+  }
+
+  @include tablet {
+    padding: 0;
+  }
 }
 
 a {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { BsFillCartFill, FiLogOut } from "../common/icons";
+import { BsFillCartFill, FiLogOut, AiOutlineMenu } from "../common/icons";
 import useAuth from "../hooks/useAuth";
 import "../assets/styles/style.scss";
 import Cart from "../component/Cart";
@@ -64,14 +64,19 @@ const Header = () => {
                 </>
               )}
             </div>
+
             {location.pathname === "/login" ||
             location.pathname === "/register" ? null : (
               <div className="lower">
-                <div className="menu">
+                <div className="menu-items">
                   <Link to={`/home`} className="mr-1">
                     Home
                   </Link>
                   <Link to={`/products`}>Products</Link>
+                </div>
+
+                <div className="menu-bar">
+                  <AiOutlineMenu />
                 </div>
 
                 <div className="cart" onClick={() => setShowCart(!showCart)}>

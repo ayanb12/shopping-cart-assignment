@@ -24,6 +24,10 @@ nav {
     justify-content: center;
     width: 100%;
 
+    @include mobile {
+      display: flex;
+    }
+
     a:hover {
       color: $primary-color;
     }
@@ -36,6 +40,24 @@ nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      .menu-items {
+        text-align: center;
+
+        @include mobile {
+          display: none;
+        }
+      }
+
+      .menu-bar {
+        margin: 0.2rem;
+        font-size: xx-large;
+        display: none;
+
+        @include mobile {
+          display: flex;
+        }
+      }
 
       .cart {
         @include dynamic-padding(0.8rem, 1.6rem, 0.8rem, 1.6rem);
