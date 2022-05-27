@@ -31,6 +31,7 @@ const FormInput = ({ type, name, labelContent }) => {
       <input
         type={type}
         className="forminput"
+        id={name}
         autoComplete="off"
         placeholder=" "
         name={name}
@@ -38,7 +39,9 @@ const FormInput = ({ type, name, labelContent }) => {
         onChange={handleChange}
       />
       {error && error.key === name && renderError()}
-      <label className="formlabel">{labelContent}</label>
+      <label className="formlabel" htmlFor={name}>
+        {labelContent}
+      </label>
     </div>
   );
 };
