@@ -127,7 +127,7 @@ function cartReducer(state, action) {
 export default function CartProvider({ children }) {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
-  async function getAllProducts() {
+  const getAllProducts = async () => {
     try {
       let { data } = await ProductService.getAllProducts();
       dispatch({
@@ -137,7 +137,7 @@ export default function CartProvider({ children }) {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   function addItems(item) {
     let updatedItem = {
@@ -202,7 +202,7 @@ export default function CartProvider({ children }) {
           cartItems: state.cartItems,
           addItems,
           allProducts: state.allProducts,
-          getAllProducts,
+          getAllProducts: getAllProducts,
           cartItemDelete,
           cartItemsInc,
           cartItemDec,
