@@ -88,7 +88,9 @@ nav {
       }
 
       .mobile-inactive {
-        display: none;
+        @include mobile {
+          display: none;
+        }
       }
 
       .menu-bar {
