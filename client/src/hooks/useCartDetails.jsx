@@ -97,11 +97,19 @@ function cartReducer(state, action) {
       };
 
     case "DELETE_ITEM":
+      const updatedCartItems = state.cartItems.filter((item, index) => {
+        state.allProducts.forEach((item, idx) => {
+          if (item.id === action.payload.id) {
+            let obj = { ...item, disable: false };
+            state.allProducts.splice(idx, 1, obj);
+          }
+        });
+        return item.id !== action.payload.id;
+      });
+
       return {
         ...state,
-        cartItems: state.cartItems.filter((item, index) => {
-          return item.id !== action.payload.id;
-        }),
+        cartItems: updatedCartItems,
       };
 
     case "UPDATE_CATEGORY":

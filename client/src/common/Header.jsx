@@ -42,6 +42,10 @@ const Header = () => {
     navigate("/login");
   };
 
+  const handleBarClosed = () => {
+    setIsBarOpened(!isBarOpened);
+  };
+
   return (
     <>
       <nav className="nav px-3 mb-1">
@@ -81,13 +85,31 @@ const Header = () => {
                 >
                   <AiOutlineClose
                     className="sidebar-close-icon"
-                    onClick={() => setIsBarOpened(!isBarOpened)}
+                    onClick={handleBarClosed}
                   />
-                  <Link to={`/home`} className="links mr-1">
+                  <Link
+                    to={`/home`}
+                    className="links mr-1"
+                    onClick={handleBarClosed}
+                  >
                     Home
                   </Link>
-                  <Link to={`/products`} className="links">
+                  <Link
+                    to={`/products`}
+                    className="links"
+                    onClick={handleBarClosed}
+                  >
                     Products
+                  </Link>
+                  <Link
+                    to={`/login`}
+                    className="links mobile-logout"
+                    onClick={() => {
+                      handleBarClosed();
+                      handleLogout();
+                    }}
+                  >
+                    Logout
                   </Link>
                 </div>
 
@@ -106,8 +128,6 @@ const Header = () => {
                 <Modal isOpen={showCart} style={modalCustomStyles}>
                   <Cart showCart={showCart} setShowCart={setShowCart} />
                 </Modal>
-
-                <FiLogOut className=" sidebar-logout" />
               </div>
             )}
           </div>

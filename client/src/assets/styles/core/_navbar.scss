@@ -54,10 +54,11 @@ nav {
           font-size: 1.5rem;
           cursor: pointer;
           display: none;
-          @include dynamic-margin(0.2rem, 0.2rem, 0, 0);
+          @include dynamic-margin(0.4rem, 0.4rem, 0, 0);
 
           @include mobile {
             display: flex;
+            font-size: 2rem;
           }
         }
 
@@ -66,6 +67,9 @@ nav {
             padding: 10px;
             border-bottom: 1px solid rgb(197, 196, 196);
             font-size: 16px;
+            @include mobile {
+              font-size: 20px;
+            }
           }
         }
       }
@@ -80,16 +84,26 @@ nav {
           top: 0;
           left: 0;
           background-color: rgba(255, 255, 255, 0.95);
-          width: 50vw;
+          width: 100vw;
           min-height: 100vh;
           text-align: center;
           border-right: 1px solid rgb(197, 196, 196);
+          // transform: translateX(-20px);
         }
       }
 
       .mobile-inactive {
         @include mobile {
           display: none;
+          // transform: translateX(-500px);
+          // transition: transform 0.5s ease-in-out;
+        }
+      }
+
+      .mobile-logout {
+        display: none;
+        @include mobile {
+          display: block;
         }
       }
 
@@ -115,18 +129,6 @@ nav {
         .cart-icon {
           margin-right: 0.1rem;
           color: $primary-color;
-        }
-      }
-
-      .sidebar-logout {
-        display: none;
-        color: $primary-color;
-        cursor: pointer;
-        font-size: xx-large;
-        margin-left: 0.5rem;
-
-        @include mobile {
-          display: block;
         }
       }
     }

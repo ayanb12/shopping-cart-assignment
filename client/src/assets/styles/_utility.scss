@@ -38,7 +38,7 @@ a {
   @include setBackgroundAndFontColor($primary-color);
   cursor: pointer;
 
-  &:hover {
+  &:hover &:not([disabled]) {
     background-color: set-background-color($primary-color);
     transition: all 0.2s ease;
     box-shadow: $box-shadow-secondary;

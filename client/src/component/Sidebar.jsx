@@ -18,6 +18,7 @@ function Sidebar() {
 
   const getProductByCategoryId = (categoryId) => {
     updateCategoryId(categoryId);
+    window.scroll({ top: 0, left: 0, behavior: "smooth" });
   };
 
   return (
