@@ -6,12 +6,20 @@
   box-shadow: $box-shadow-secondary;
   height: 15rem;
 
+  @include mobile {
+    padding: 0 0.5rem;
+  }
+
   &:nth-child(even) {
     flex-direction: row-reverse;
   }
 
   .category-img {
     height: 80%;
+
+    @include mobile {
+      height: 40%;
+    }
   }
 
   .category-content {
@@ -19,6 +27,16 @@
 
     h2 {
       font-size: 1.5rem;
+
+      @include mobile {
+        font-size: 1rem;
+      }
+    }
+
+    p {
+      @include mobile {
+        font-size: smaller;
+      }
     }
   }
 }

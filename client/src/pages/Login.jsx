@@ -14,7 +14,7 @@ const Login = () => {
   };
 
   const printwidth = () => {
-    console.log("innerWidth : ", window.innerWidth);
+    // console.log("innerWidth : ", window.innerWidth);
   };
 
   useEffect(() => {

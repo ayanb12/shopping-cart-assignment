@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { BsFillCartFill, FiLogOut, AiOutlineMenu } from "../common/icons";
+import {
+  BsFillCartFill,
+  FiLogOut,
+  AiOutlineMenu,
+  AiOutlineClose,
+} from "../common/icons";
 import useAuth from "../hooks/useAuth";
 import "../assets/styles/style.scss";
 import Cart from "../component/Cart";
@@ -27,6 +32,7 @@ const modalCustomStyles = {
 
 const Header = () => {
   const [showCart, setShowCart] = useState(false);
+  const [isBarOpened, setIsBarOpened] = useState(false);
   const { clearStorage } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -68,15 +74,29 @@ const Header = () => {
             {location.pathname === "/login" ||
             location.pathname === "/register" ? null : (
               <div className="lower">
-                <div className="menu-items">
-                  <Link to={`/home`} className="mr-1">
+                <div
+                  className={`menu-items mobile-${
+                    isBarOpened ? "active" : "inactive"
+                  }`}
+                >
+                  <AiOutlineClose
+                    className="sidebar-close-icon"
+                    onClick={() => setIsBarOpened(!isBarOpened)}
+                  />
+                  <Link to={`/home`} className="links mr-1">
                     Home
                   </Link>
-                  <Link to={`/products`}>Products</Link>
+                  <Link to={`/products`} className="links">
+                    Products
+                  </Link>
                 </div>
 
                 <div className="menu-bar">
-                  <AiOutlineMenu />
+                  <AiOutlineMenu
+                    onClick={() => {
+                      setIsBarOpened(!isBarOpened);
+                    }}
+                  />
                 </div>
 
                 <div className="cart" onClick={() => setShowCart(!showCart)}>
@@ -86,6 +106,8 @@ const Header = () => {
                 <Modal isOpen={showCart} style={modalCustomStyles}>
                   <Cart showCart={showCart} setShowCart={setShowCart} />
                 </Modal>
+
+                <FiLogOut className=" sidebar-logout" />
               </div>
             )}
           </div>

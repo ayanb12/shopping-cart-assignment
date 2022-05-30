@@ -43,6 +43,11 @@ a {
     transition: all 0.2s ease;
     box-shadow: $box-shadow-secondary;
   }
+
+  @include mobile {
+    font-size: smaller;
+    padding: 0.8rem;
+  }
 }
 
 .logout {
