@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "../hooks/useCartDetails";
 import { BACKEND_BASE_URL } from "./../common/Environment";
 
 const CategoryCard = ({ data }) => {
   const navigate = useNavigate();
+  const { updateCategoryId } = useContext(CartContext);
+
+  const getProductByCategoryId = (categoryId) => {
+    updateCategoryId(categoryId);
+    window.scroll({ top: 0, left: 0, behavior: "smooth" });
+    navigate("/products");
+  };
 
   return (
     <>
@@ -19,7 +27,7 @@ const CategoryCard = ({ data }) => {
           <p className="my-1">{data.description}</p>
           <button
             className="btn btn-primary"
-            onClick={() => navigate("/products")}
+            onClick={() => getProductByCategoryId(data.id)}
           >
             Explore {data.name}
           </button>
