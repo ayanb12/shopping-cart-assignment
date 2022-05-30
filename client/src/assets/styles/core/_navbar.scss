@@ -100,6 +100,13 @@ nav {
         }
       }
 
+      .mobile-logout {
+        display: none;
+        @include mobile {
+          display: block;
+        }
+      }
+
       .menu-bar {
         margin: 0.2rem;
         font-size: xx-large;
@@ -122,18 +129,6 @@ nav {
         .cart-icon {
           margin-right: 0.1rem;
           color: $primary-color;
-        }
-      }
-
-      .sidebar-logout {
-        display: none;
-        color: $primary-color;
-        cursor: pointer;
-        font-size: xx-large;
-        margin-left: 0.5rem;
-
-        @include mobile {
-          display: block;
         }
       }
     }

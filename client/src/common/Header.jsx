@@ -103,7 +103,7 @@ const Header = () => {
                   </Link>
                   <Link
                     to={`/login`}
-                    className="links"
+                    className="links mobile-logout"
                     onClick={() => {
                       handleBarClosed();
                       handleLogout();
@@ -128,8 +128,6 @@ const Header = () => {
                 <Modal isOpen={showCart} style={modalCustomStyles}>
                   <Cart showCart={showCart} setShowCart={setShowCart} />
                 </Modal>
-
-                <FiLogOut className=" sidebar-logout" />
               </div>
             )}
           </div>
