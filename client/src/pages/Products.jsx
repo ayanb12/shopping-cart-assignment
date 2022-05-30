@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useCallback } from "react";
+import React, { useContext, useEffect, useCallback, useState } from "react";
 import { NotificationMessage } from "../common/NotificationMessage";
 import Sidebar from "../component/Sidebar";
 import { CartContext } from "../hooks/useCartDetails";
@@ -7,6 +7,8 @@ import ProductService from "../service/Product.service";
 function Products() {
   const { allProducts, addItems, getAllProducts, isItemAvailable } =
     useContext(CartContext);
+
+  // const [selectedCategory, setSeletedCategory] = useState("all_categories");
 
   // console.log(allProducts);
 

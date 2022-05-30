@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "../component/Form/Form";
 import FormInput from "../component/Form/FormInput";
@@ -12,6 +12,17 @@ const Login = () => {
     setDataToStorage(values);
     navigate("/");
   };
+
+  const printwidth = () => {
+    // console.log("innerWidth : ", window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", printwidth);
+    return () => {
+      window.removeEventListener("resize", printwidth);
+    };
+  }, []);
 
   return (
     <>
