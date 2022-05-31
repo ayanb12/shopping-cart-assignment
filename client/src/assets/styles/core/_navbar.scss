@@ -48,6 +48,7 @@ nav {
       .menu-items {
         text-align: center;
         z-index: 2;
+        transition: display 0.3s ease;
 
         .sidebar-close-icon {
           align-self: flex-end;
@@ -88,15 +89,12 @@ nav {
           min-height: 100vh;
           text-align: center;
           border-right: 1px solid rgb(197, 196, 196);
-          // transform: translateX(-20px);
         }
       }
 
       .mobile-inactive {
         @include mobile {
           display: none;
-          // transform: translateX(-500px);
-          // transition: transform 0.5s ease-in-out;
         }
       }
 

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useCallback, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { NotificationMessage } from "../common/NotificationMessage";
 import Sidebar from "../component/Sidebar";
 import { CartContext } from "../hooks/useCartDetails";

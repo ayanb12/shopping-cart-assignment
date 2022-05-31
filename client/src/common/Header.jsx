@@ -32,7 +32,7 @@ const modalCustomStyles = {
 
 const Header = () => {
   const [showCart, setShowCart] = useState(false);
-  const [isBarOpened, setIsBarOpened] = useState(false);
+  const [isBarOpened, setIsBarOpened] = useState("inactive");
   const { clearStorage } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -43,7 +43,19 @@ const Header = () => {
   };
 
   const handleBarClosed = () => {
-    setIsBarOpened(!isBarOpened);
+    preventScroll();
+  };
+
+  const preventScroll = () => {
+    setIsBarOpened((prevState) =>
+      prevState === "active" ? "inactive" : "active"
+    );
+    if (isBarOpened === "active") {
+      document.body.style.overflow = "scroll";
+    } else {
+      document.body.style.overflow = "hidden";
+    }
+    return isBarOpened;
   };
 
   return (
@@ -78,14 +90,10 @@ const Header = () => {
             {location.pathname === "/login" ||
             location.pathname === "/register" ? null : (
               <div className="lower">
-                <div
-                  className={`menu-items mobile-${
-                    isBarOpened ? "active" : "inactive"
-                  }`}
-                >
+                <div className={`menu-items mobile-${isBarOpened}`}>
                   <AiOutlineClose
                     className="sidebar-close-icon"
-                    onClick={handleBarClosed}
+                    onClick={() => preventScroll()}
                   />
                   <Link
                     to={`/home`}
@@ -114,11 +122,7 @@ const Header = () => {
                 </div>
 
                 <div className="menu-bar">
-                  <AiOutlineMenu
-                    onClick={() => {
-                      setIsBarOpened(!isBarOpened);
-                    }}
-                  />
+                  <AiOutlineMenu onClick={() => preventScroll()} />
                 </div>
 
                 <div className="cart" onClick={() => setShowCart(!showCart)}>
