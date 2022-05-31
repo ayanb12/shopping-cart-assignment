@@ -2,8 +2,8 @@ import React, { useContext, useState } from "react";
 import {
   AiOutlineClose,
   AiFillDelete,
-  AiOutlinePlusCircle,
-  AiOutlineMinusCircle,
+  AiOutlinePlus,
+  AiOutlineMinus,
 } from "../common/icons";
 import { CartContext } from "../hooks/useCartDetails";
 import productService from "../service/Product.service";
@@ -59,12 +59,13 @@ function Cart({ showCart, setShowCart }) {
                     <div className="cart-item-name">{item.name}</div>
                     <div className="cart-item-main-section">
                       <div className="cart-item-quantity-section">
-                        <AiOutlineMinusCircle
+                        <AiOutlineMinus
                           className="icon-inc-dec"
                           onClick={() => handleItemCountDec(item)}
                         />
                         <p className="number-of-items">{item.count}</p>
-                        <AiOutlinePlusCircle
+
+                        <AiOutlinePlus
                           className="icon-inc-dec"
                           onClick={() => handleItemCountInc(item)}
                         />
@@ -84,32 +85,36 @@ function Cart({ showCart, setShowCart }) {
               </div>
             ))
           ) : (
-            <p style={{ textAlign: "center", marginTop: ".3rem" }}>
-              No items in cart
-            </p>
+            <div className="empty-cart-msg">
+              No products in cart 👜
+              <p>Your favourite items are just a click away</p>
+            </div>
           )}
           <div
-            className="proceed-to-checkout"
+            className="proceed-to-checkout p-1"
             style={{
               justifyContent: cartItems.length ? "space-between" : null,
             }}
           >
-            {cartItems.length ? (
-              <>
-                <h4>Proceed to Checkout</h4>
-                <h4>{cartTotalPrice}</h4>
-              </>
-            ) : (
-              <h4
-                className="empty-cart"
-                onClick={() => {
-                  navigate("/products");
-                  setShowCart(false);
-                }}
-              >
-                Start Shopping
-              </h4>
-            )}
+            <p>Promo code can be applied on payment page</p>
+            <div className="btn btn-primary">
+              {cartItems.length ? (
+                <>
+                  <h4>Proceed to Checkout</h4>
+                  <h4>{cartTotalPrice}</h4>
+                </>
+              ) : (
+                <h4
+                  className="empty-cart"
+                  onClick={() => {
+                    navigate("/products");
+                    setShowCart(false);
+                  }}
+                >
+                  Start Shopping
+                </h4>
+              )}
+            </div>
           </div>
         </div>
       </>

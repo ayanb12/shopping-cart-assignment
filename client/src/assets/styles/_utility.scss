@@ -62,3 +62,22 @@ a {
 .btn-disable {
   @include setBackgroundAndFontColor($disable-color);
 }
+
+.ReactModal__Content {
+  background-color: #f3f3f3 !important;
+  @include mobile {
+    left: 50% !important;
+    transform: translateX(-50%);
+    height: 85vh !important;
+    width: 100vw !important;
+  }
+
+  @include tablet {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  @include laptop {
+    left: 58% !important;
+  }
+}
