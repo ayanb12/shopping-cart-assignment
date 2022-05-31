@@ -9,6 +9,10 @@ nav {
   // position: sticky;
   //   width: 100%;
 
+  @include mobile {
+    padding: 0 1rem !important;
+  }
+
   .logo {
     height: 4.5rem;
     width: 9rem;
@@ -44,6 +48,10 @@ nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      @include mobile {
+        justify-content: flex-end;
+      }
 
       .menu-items {
         text-align: center;
@@ -106,9 +114,10 @@ nav {
       }
 
       .menu-bar {
-        margin: 0.2rem;
         font-size: xx-large;
         display: none;
+        color: $primary-color;
+        margin-right: 0.7rem;
 
         @include mobile {
           display: block;
@@ -124,9 +133,18 @@ nav {
           cursor: pointer;
         }
 
+        @include mobile {
+          padding: 0;
+          background-color: white;
+        }
+
         .cart-icon {
           margin-right: 0.1rem;
           color: $primary-color;
+
+          @include mobile {
+            font-size: xx-large;
+          }
         }
       }
     }

@@ -15,3 +15,9 @@
     @content;
   }
 }
+
+@mixin mobile-tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
