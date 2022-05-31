@@ -3,9 +3,17 @@
   margin: 0.1rem;
   padding: 0.5rem;
   color: $primary-text-color;
+  cursor: pointer;
+
+  @include mobile {
+    color: white;
+  }
 
   &:hover {
     color: $primary-color;
-    cursor: pointer;
+
+    @include mobile {
+      color: $primary-text-color;
+    }
   }
 }

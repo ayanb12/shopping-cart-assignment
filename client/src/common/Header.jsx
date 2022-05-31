@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   BsFillCartFill,
@@ -33,6 +33,8 @@ const modalCustomStyles = {
 const Header = () => {
   const [showCart, setShowCart] = useState(false);
   const [isBarOpened, setIsBarOpened] = useState("inactive");
+  const [windowWidth, setWindowWidth] = useState(() => window.innerWidth);
+
   const { clearStorage } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -57,6 +59,17 @@ const Header = () => {
     }
     return isBarOpened;
   };
+
+  const printwidth = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", printwidth);
+    return () => {
+      window.removeEventListener("resize", printwidth);
+    };
+  }, []);
 
   return (
     <>
@@ -120,14 +133,15 @@ const Header = () => {
                     Logout
                   </Link>
                 </div>
-
-                <div className="menu-bar">
-                  <AiOutlineMenu onClick={() => preventScroll()} />
-                </div>
+                {isBarOpened === "inactive" ? (
+                  <div className="menu-bar">
+                    <AiOutlineMenu onClick={() => preventScroll()} />
+                  </div>
+                ) : null}
 
                 <div className="cart" onClick={() => setShowCart(!showCart)}>
                   <BsFillCartFill className="cart-icon" />
-                  Cart
+                  {windowWidth >= 500 ? "Cart" : ""}
                 </div>
                 <Modal isOpen={showCart} style={modalCustomStyles}>
                   <Cart showCart={showCart} setShowCart={setShowCart} />

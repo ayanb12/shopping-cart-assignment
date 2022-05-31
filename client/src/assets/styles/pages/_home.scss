@@ -10,6 +10,14 @@
     padding: 0 0.5rem;
   }
 
+  @include tablet {
+    padding: 0 1rem !important;
+  }
+
+  @include laptop {
+    padding: 0 2rem !important;
+  }
+
   &:nth-child(even) {
     flex-direction: row-reverse;
   }
@@ -17,8 +25,12 @@
   .category-img {
     height: 80%;
 
-    @include mobile {
+    @include mobile-tablet {
       height: 40%;
+    }
+
+    @include laptop {
+      height: 60%;
     }
   }
 
@@ -34,8 +46,12 @@
     }
 
     p {
-      @include mobile {
+      @include mobile-tablet {
         font-size: smaller;
+      }
+
+      @include laptop {
+        font-size: 14px;
       }
     }
   }
