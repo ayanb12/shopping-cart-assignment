@@ -3,26 +3,18 @@ import { NotificationMessage } from "../common/NotificationMessage";
 import Sidebar from "../component/Sidebar";
 import { CartContext } from "../hooks/useCartDetails";
 import ProductService from "../service/Product.service";
+import PropTypes from "prop-types";
 
 function Products() {
   const { allProducts, addItems, getAllProducts, isItemAvailable } =
     useContext(CartContext);
 
-  // const [selectedCategory, setSeletedCategory] = useState("all_categories");
-
-  // console.log(allProducts);
-
-  const getProducts = useCallback(async () => {
-    await getAllProducts();
-  }, [getAllProducts]);
-
   useEffect(() => {
-    getProducts();
+    const fetchProducts = async () => {
+      await getAllProducts();
+    };
+    fetchProducts();
   }, []);
-
-  const handleClick = (item) => {
-    addItems(item);
-  };
 
   return (
     <>
@@ -51,7 +43,7 @@ function Products() {
                       item.disable && "btn-disable"
                     }`}
                     onClick={() => {
-                      handleClick(item);
+                      addItems(item);
                       NotificationMessage("success", "Added to Cart");
                     }}
                   >
@@ -71,4 +63,7 @@ function Products() {
   );
 }
 
+Products.propTypes = {
+  getAllProducts: PropTypes.func,
+};
 export default Products;
