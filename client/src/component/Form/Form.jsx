@@ -1,5 +1,6 @@
 import React, { createContext } from "react";
 import useFormValidation from "../../hooks/useFormValidation";
+import { useLocation } from "react-router-dom";
 
 export const FormContent = createContext({
   form: {},
@@ -8,6 +9,7 @@ export const FormContent = createContext({
 
 const Form = ({ initialValue, submit, children }) => {
   const { form, error, validating, setForm } = useFormValidation(initialValue);
+  const location = useLocation();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -36,7 +38,9 @@ const Form = ({ initialValue, submit, children }) => {
           {children}
         </FormContent.Provider>
 
-        <button className="btn btn-primary submit-btn">Login</button>
+        <button className="btn btn-primary submit-btn">
+          {location.pathname === "/register" ? "Register" : "Login"}
+        </button>
       </form>
     </>
   );
