@@ -44,6 +44,10 @@ a {
     box-shadow: $box-shadow-secondary;
   }
 
+  &:focus {
+    border: 2px solid $primary-text-color !important;
+  }
+
   @include mobile {
     font-size: smaller;
     padding: 0.8rem;
