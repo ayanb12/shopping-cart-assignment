@@ -1,0 +1,105 @@
+$primary-color: #b7142ae4;
+$primary-text-color: #000 !default;
+$max-width: 1200px;
+$secondary-color: #eee;
+$secondary-text-color: rgb(53, 52, 52);
+$marginValues: (1, 2, 3, 4, 5);
+$box-shadow-primary: 2px 2px 8px 0px rgba(0, 0, 0, 0.75);
+$box-shadow-secondary: rgb(0 0 0 / 45%) 0px 25px 25px -20px;
+$disable-color: #918e8e;
+
+@mixin dynamic-padding($top, $right, $bottom, $left) {
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  padding-left: $left;
+}
+
+@mixin dynamic-margin($top: 0, $right: 0, $bottom: 0, $left: 0) {
+  margin-top: $top;
+  margin-right: $right;
+  margin-bottom: $bottom;
+  margin-left: $left;
+}
+
+@function set-background-color($color) {
+  @if (lightness($color) > 60) {
+    @return darken($color, 10%);
+  } @else {
+    @return lighten($color, 10%);
+  }
+}
+
+@function set-font-color($color) {
+  @if (lightness($color) > 80) {
+    @return #141413;
+  } @else {
+    @return #fff;
+  }
+}
+
+@mixin setBackgroundAndFontColor($color) {
+  background-color: $color;
+  color: set-font-color($color);
+}
+
+@each $mar in $marginValues {
+  // for all side margins
+  .m-#{$mar} {
+    margin: #{$mar}rem;
+  }
+
+  //   vertical margins
+  .my-#{$mar} {
+    margin: #{$mar}rem 0;
+  }
+
+  //   horizontal margins
+  .mx-#{$mar} {
+    margin: 0 #{$mar}rem;
+  }
+
+  //   only margin right
+  .mr-#{$mar} {
+    margin-right: #{$mar}rem;
+  }
+
+  // margin top
+  .mt-#{$mar} {
+    margin-top: #{$mar}rem;
+  }
+
+  //   only margin bottom
+  .mb-#{$mar} {
+    margin-bottom: #{$mar}rem;
+  }
+  // for all side padding
+  .p-#{$mar} {
+    padding: #{$mar}rem;
+  }
+
+  //   vertical padding
+  .py-#{$mar} {
+    padding: #{$mar}rem 0;
+  }
+
+  //   horizontal padding
+  .px-#{$mar} {
+    padding: 0 #{$mar}rem;
+  }
+
+  // padding top
+  .pt-#{$mar} {
+    padding-top: #{$mar}rem;
+  }
+
+  //   only padding right
+  .pr-#{$mar} {
+    padding-right: #{$mar}rem;
+  }
+
+  //   only padding left
+  .pl-#{$mar} {
+    padding-left: #{$mar}rem;
+  }
+}

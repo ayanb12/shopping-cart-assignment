@@ -1,0 +1,87 @@
+@import "./core/media-queries";
+
+.container {
+  max-width: $max-width;
+  padding: 0 2rem;
+  overflow: hidden;
+  margin: 0 auto;
+  height: auto;
+  // overflow-y: auto;
+
+  @include mobile {
+    padding: 0;
+  }
+
+  @include tablet {
+    padding: 0;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $secondary-text-color;
+  font-weight: bold;
+}
+
+.btn {
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  @include dynamic-padding(0.9rem, 1.4rem, 0.9rem, 1.4rem);
+  font-size: 1rem;
+  border-radius: 0.2rem;
+  border: none;
+  outline: none;
+}
+
+.btn-primary {
+  @include setBackgroundAndFontColor($primary-color);
+  cursor: pointer;
+
+  &:hover &:not([disabled]) {
+    background-color: set-background-color($primary-color);
+    transition: all 0.2s ease;
+    box-shadow: $box-shadow-secondary;
+  }
+
+  &:focus {
+    border: 2px solid $primary-text-color !important;
+  }
+
+  @include mobile {
+    font-size: smaller;
+    padding: 0.8rem;
+  }
+}
+
+.logout {
+  color: $primary-color;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.2rem;
+}
+
+.btn-disable {
+  @include setBackgroundAndFontColor($disable-color);
+}
+
+.ReactModal__Content {
+  background-color: #f3f3f3 !important;
+  @include mobile {
+    left: 50% !important;
+    transform: translateX(-50%);
+    height: 85vh !important;
+    width: 100vw !important;
+  }
+
+  @include tablet {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  @include laptop {
+    left: 58% !important;
+  }
+}

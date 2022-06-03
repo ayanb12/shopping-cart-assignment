@@ -1,0 +1,127 @@
+.sidebar-and-products {
+  display: flex;
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 25vw;
+    height: 80vh;
+    background-color: $secondary-color;
+    // margin-left: 5vw;
+    // margin-top: 19vh;
+
+    @include mobile {
+      width: 100vw;
+      height: auto;
+      background-color: $primary-color;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .product-container {
+    width: 75vw;
+    flex-wrap: wrap;
+    align-items: center;
+    display: flex;
+    @include dynamic-padding(0.2rem, 0, 0, 0);
+    // margin-left: 25vw;
+
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+    }
+
+    .product-card {
+      width: 24.5%;
+      background-color: white;
+      @include dynamic-margin(0, 0.2rem, 0.8rem, 0);
+      @include dynamic-padding(0.1rem, 0, 0.1rem, 0);
+      box-shadow: $box-shadow-secondary;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @include mobile {
+        width: auto !important;
+      }
+
+      @include tablet {
+        width: 49.1% !important;
+      }
+
+      @include laptop {
+        width: 32.7% !important;
+      }
+
+      .product-header {
+        color: $secondary-text-color;
+        padding: 0.2rem 0.4rem;
+        font-weight: 700;
+        min-height: 3rem;
+      }
+
+      .img-descp {
+        width: 100%;
+
+        @include mobile-tablet {
+          display: flex;
+        }
+
+        .product-img {
+          width: 100%;
+          height: 80%;
+          padding: 0.5rem;
+
+          @include mobile-tablet {
+            width: 48%;
+            margin: auto;
+          }
+        }
+
+        .product-descp {
+          padding: 0.5rem;
+          background-color: $secondary-color;
+          word-wrap: break-word;
+          border-radius: 0.2rem;
+          @include dynamic-margin(0.4rem, 0.2rem, 0.4rem, 0.2rem);
+          word-spacing: 0.1rem;
+          font-size: 14px;
+          min-height: 9rem;
+
+          @include mobile-tablet {
+            min-height: 14rem;
+          }
+        }
+      }
+
+      .price-and-buynow {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include dynamic-padding(0.1rem, 0.4rem, 0.4rem, 0.2rem);
+
+        @include mobile-tablet {
+          width: 100%;
+        }
+
+        .buynow {
+          outline: none;
+          padding: 0.2rem 0.4rem;
+          border: none;
+          font-size: 1rem;
+          margin-left: 0.2rem;
+
+          @include mobile-tablet {
+            width: 100%;
+            padding: 4px 0;
+          }
+        }
+      }
+    }
+  }
+}

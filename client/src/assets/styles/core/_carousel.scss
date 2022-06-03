@@ -1,0 +1,22 @@
+.carousel {
+  height: 200px;
+
+  @include mobile {
+    height: 18vh;
+  }
+
+  .carousel-img {
+    background-color: cyan;
+    height: 250px;
+    display: inline-block;
+
+    @include mobile {
+      height: 16vh;
+    }
+  }
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: $primary-color !important;
+}

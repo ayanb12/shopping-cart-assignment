@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import "config";
+@import "utility";
+@import "./core/navbar";
+@import "./pages/home";
+@import "./core/carousel";
+@import "./pages/Login";
+@import "./pages/products";
+@import "./core/sidebar";
+@import "./core/footer";
+@import "./core/cart";
+@import "./core/media-queries";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: white;
+  font-family: "Roboto", sans-serif;
+}

@@ -1,0 +1,152 @@
+nav {
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  box-shadow: $box-shadow-primary;
+  height: 15vh;
+  top: 0;
+  left: 0;
+  // position: sticky;
+  //   width: 100%;
+
+  @include mobile {
+    padding: 0 1rem !important;
+  }
+
+  .logo {
+    height: 4.5rem;
+    width: 9rem;
+  }
+
+  & > div {
+    width: 100%;
+  }
+
+  .nav-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+
+    @include mobile {
+      display: flex;
+    }
+
+    a:hover {
+      color: $primary-color;
+    }
+
+    .upper {
+      @include dynamic-margin(0, 0, 0.2rem, auto);
+
+      @include mobile {
+        display: none;
+      }
+    }
+
+    .lower {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @include mobile {
+        justify-content: flex-end;
+      }
+
+      .menu-items {
+        text-align: center;
+        z-index: 2;
+        transition: display 0.3s ease;
+
+        .sidebar-close-icon {
+          align-self: flex-end;
+          font-size: 1.5rem;
+          cursor: pointer;
+          display: none;
+          @include dynamic-margin(0.4rem, 0.4rem, 0, 0);
+
+          @include mobile {
+            display: flex;
+            font-size: 2rem;
+          }
+        }
+
+        .links {
+          @include mobile {
+            padding: 10px;
+            border-bottom: 1px solid rgb(197, 196, 196);
+            font-size: 16px;
+            @include mobile {
+              font-size: 20px;
+            }
+          }
+        }
+      }
+
+      .mobile-active {
+        display: block;
+
+        @include mobile {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background-color: rgba(255, 255, 255, 0.95);
+          width: 100vw;
+          min-height: 100vh;
+          text-align: center;
+          border-right: 1px solid rgb(197, 196, 196);
+        }
+      }
+
+      .mobile-inactive {
+        @include mobile {
+          display: none;
+        }
+      }
+
+      .mobile-logout {
+        display: none;
+        @include mobile {
+          display: block;
+        }
+      }
+
+      .menu-bar {
+        font-size: xx-large;
+        display: none;
+        color: $primary-color;
+        margin-right: 0.7rem;
+
+        @include mobile {
+          display: block;
+        }
+      }
+
+      .cart {
+        @include dynamic-padding(0.8rem, 1.6rem, 0.8rem, 1.6rem);
+        background-color: $secondary-color;
+        font-weight: 600;
+        &:hover {
+          background-color: set-background-color($secondary-color);
+          cursor: pointer;
+        }
+
+        @include mobile {
+          padding: 0;
+          background-color: white;
+        }
+
+        .cart-icon {
+          margin-right: 0.1rem;
+          color: $primary-color;
+
+          @include mobile {
+            font-size: xx-large;
+          }
+        }
+      }
+    }
+  }
+}
