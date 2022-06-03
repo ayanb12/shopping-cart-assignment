@@ -34,7 +34,7 @@ app.use("/", loginRouter);
 app.use("/", refreshTokenRouter);
 app.use("/", logoutRouter);
 
-app.use(verifyJWT);
+// app.use(verifyJWT);
 app.use("/", productRouter);
 
 module.exports = app;
